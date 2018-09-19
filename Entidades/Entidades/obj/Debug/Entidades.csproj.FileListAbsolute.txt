@@ -1,7 +1,6 @@
-C:\Users\ArleyZohan\Desktop\tp_laboratorio_2\Entidades\Entidades\bin\Debug\Entidades.exe.config
-C:\Users\ArleyZohan\Desktop\tp_laboratorio_2\Entidades\Entidades\bin\Debug\Entidades.exe
+C:\Users\ArleyZohan\Desktop\tp_laboratorio_2\Entidades\Entidades\bin\Debug\Entidades.dll
 C:\Users\ArleyZohan\Desktop\tp_laboratorio_2\Entidades\Entidades\bin\Debug\Entidades.pdb
 C:\Users\ArleyZohan\Desktop\tp_laboratorio_2\Entidades\Entidades\obj\Debug\Entidades.csprojAssemblyReference.cache
 C:\Users\ArleyZohan\Desktop\tp_laboratorio_2\Entidades\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
-C:\Users\ArleyZohan\Desktop\tp_laboratorio_2\Entidades\Entidades\obj\Debug\Entidades.exe
+C:\Users\ArleyZohan\Desktop\tp_laboratorio_2\Entidades\Entidades\obj\Debug\Entidades.dll
 C:\Users\ArleyZohan\Desktop\tp_laboratorio_2\Entidades\Entidades\obj\Debug\Entidades.pdb
