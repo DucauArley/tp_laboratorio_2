@@ -16,6 +16,7 @@ namespace MiCalculadora
         public LaCalculadora()
         {
             InitializeComponent();
+            this.cmbOperador.SelectedIndex = 0;
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -75,7 +76,7 @@ namespace MiCalculadora
             txtNumero1.Text = "";
             txtNumero2.Text = "";
             lblResultado.Text = "";
-            cmbOperador.Text = "";
+            this.cmbOperador.SelectedIndex = 0;
         }
 
         private static double Operar(string numero1, string numero2, string operador)
@@ -106,6 +107,11 @@ namespace MiCalculadora
             }
 
             return ok;
+        }
+
+        private void cmbOperador_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
