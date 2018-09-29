@@ -11,36 +11,49 @@ namespace Entidades_2018
     /// </summary>
     public abstract class Producto
     {
-        enum EMarca
+        public enum EMarca
         {
             Serenisima, Campagnola, Arcor, Ilolay, Sancor, Pepsico
         }
-        EMarca marca;
-        string codigoDeBarras;
-        ConsoleColor colorPrimarioEmpaque;
+        protected EMarca marca;
+        protected string codigoDeBarras;
+        protected ConsoleColor colorPrimarioEmpaque;
+
+        public Producto(string patente, EMarca marca, ConsoleColor color)
+        {
+            this.marca = marca;
+            this.codigoDeBarras = patente;
+            this.colorPrimarioEmpaque = color;
+        }
 
         /// <summary>
-        /// ReadOnly: Retornará la cantidad de ruedas del vehículo
+        /// ReadOnly: Retornará la cantidad de calorias del producto
         /// </summary>
-        protected abstract short CantidadCalorias { get; set; }
+        protected abstract short CantidadCalorias { get; }
 
         /// <summary>
         /// Publica todos los datos del Producto.
         /// </summary>
         /// <returns></returns>
-        sealed string Mostrar()
+        public virtual string Mostrar()
         {
-            return this;
+            return (string) this;
         }
 
+
+
+        /// <summary>
+        /// Muestra todos los datos del producto
+        /// </summary>
+        /// <param name="p"></param>
         public static explicit operator string(Producto p)
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine("CODIGO DE BARRAS: {0}\r\n" + p.codigoDeBarras);
-            sb.AppendLine("MARCA          : {0}\r\n" + p.marca.ToString());
-            sb.AppendLine("COLOR EMPAQUE  : {0}\r\n" + p.colorPrimarioEmpaque.ToString());
-            sb.AppendLine("---------------------");
+            sb.AppendFormat("CODIGO DE BARRAS: {0}\r\n", p.codigoDeBarras);
+            sb.AppendFormat("MARCA          : {0}\r\n", p.marca.ToString());
+            sb.AppendFormat("COLOR EMPAQUE  : {0}\r\n", p.colorPrimarioEmpaque.ToString());
+            sb.AppendFormat("---------------------");
 
             return sb.ToString();
         }
@@ -63,7 +76,7 @@ namespace Entidades_2018
         /// <returns></returns>
         public static bool operator !=(Producto v1, Producto v2)
         {
-            return (v1.codigoDeBarras == v2.codigoDeBarras);
+            return !(v1 == v2);
         }
     }
 }

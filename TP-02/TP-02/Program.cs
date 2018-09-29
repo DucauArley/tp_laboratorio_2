@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entidades_2018;
 
 namespace TP_02_2018
 {
@@ -15,7 +16,7 @@ namespace TP_02_2018
             Console.SetWindowSize(Console.LargestWindowWidth / 2, Console.LargestWindowHeight - 2);
 
             // Nombre del alumno
-            Console.
+            Console.WriteLine("Ducau Arley");
 
             Changuito changoDeCompras = new Changuito(6);
 

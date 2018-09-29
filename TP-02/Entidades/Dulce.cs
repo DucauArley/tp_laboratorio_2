@@ -8,14 +8,14 @@ namespace Entidades_2018
 {
     public class Dulce : Producto
     {
-        public Dulce(EMarca marca, string patente, ConsoleColor color)
+        public Dulce(EMarca marca, string patente, ConsoleColor color) : base(patente, marca, color)
         {
         }
 
         /// <summary>
         /// Los dulces tienen 80 calorías
         /// </summary>
-        protected short CantidadCalorias
+        protected override short CantidadCalorias
         {
             get
             {
@@ -23,17 +23,17 @@ namespace Entidades_2018
             }
         }
 
-        private override sealed string Mostrar()
+        public override string Mostrar()
         {
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("DULCE");
-            sb.AppendLine(this.Mostrar());
-            sb.AppendLine("CALORIAS : {0}", this.CantidadCalorias);
+            sb.AppendLine(base.Mostrar());
+            sb.AppendFormat("CALORIAS : {0}", this.CantidadCalorias);
             sb.AppendLine("");
             sb.AppendLine("---------------------");
 
-            return sb;
+            return sb.ToString();
         }
     }
 }

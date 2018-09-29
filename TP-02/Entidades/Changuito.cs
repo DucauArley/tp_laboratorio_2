@@ -9,21 +9,24 @@ namespace Entidades_2018
     /// <summary>
     /// No podrá tener clases heredadas.
     /// </summary>
-    public class Changuito
+    public sealed class Changuito
     {
-        List<Producto> productos;
-        int espacioDisponible;
-
         public enum ETipo
         {
             Dulce, Leche, Snacks, Todos
         }
+
+        private List<Producto> productos;
+        private int espacioDisponible;
+        
 
         #region "Constructores"
         private Changuito()
         {
             this.productos = new List<Producto>();
         }
+
+
         public Changuito(int espacioDisponible):this()
         {
             this.espacioDisponible = espacioDisponible;
@@ -35,7 +38,7 @@ namespace Entidades_2018
         /// Muestro el Changuito y TODOS los Productos
         /// </summary>
         /// <returns></returns>
-        public string ToString()
+        public override string ToString()
         {
             return Changuito.Mostrar(this, ETipo.Todos);
         }
@@ -61,13 +64,22 @@ namespace Entidades_2018
                 switch (tipo)
                 {
                     case ETipo.Snacks:
-                        sb.AppendLine(v.Mostrar());
+                        if (v is Snacks)
+                        {
+                            sb.AppendLine(v.Mostrar());
+                        }
                         break;
                     case ETipo.Dulce:
-                        sb.AppendLine(v.Mostrar());
+                        if (v is Dulce)
+                        {
+                            sb.AppendLine(v.Mostrar());
+                        }
                         break;
                     case ETipo.Leche:
-                        sb.AppendLine(v.Mostrar());
+                        if (v is Leche)
+                        {
+                            sb.AppendLine(v.Mostrar());
+                        }
                         break;
                     default:
                         sb.AppendLine(v.Mostrar());
@@ -75,7 +87,7 @@ namespace Entidades_2018
                 }
             }
 
-            return sb;
+            return sb.ToString();
         }
         #endregion
 
@@ -88,13 +100,19 @@ namespace Entidades_2018
         /// <returns></returns>
         public static Changuito operator +(Changuito c, Producto p)
         {
-            foreach (Producto v in c)
+            foreach (Producto v in c.productos)
             {
                 if (v == p)
+                {
                     return c;
+                }
             }
 
-            c.productos.Add(p);
+
+            if (c.productos.Count < c.espacioDisponible)
+            {
+                c.productos.Add(p);
+            }
             return c;
         }
         /// <summary>
@@ -105,10 +123,11 @@ namespace Entidades_2018
         /// <returns></returns>
         public static Changuito operator -(Changuito c, Producto p)
         {
-            foreach (Producto v in c)
+            foreach (Producto v in c.productos)
             {
                 if (v == p)
                 {
+                    c.productos.Remove(p);
                     break;
                 }
             }
