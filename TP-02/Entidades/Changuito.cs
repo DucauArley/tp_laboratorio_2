@@ -21,12 +21,21 @@ namespace Entidades_2018
         
 
         #region "Constructores"
+
+
+        /// <summary>
+        /// Constructor que inicializa la lista de productos
+        /// </summary>
         private Changuito()
         {
             this.productos = new List<Producto>();
         }
 
 
+        /// <summary>
+        /// Constructor que asigna el valor introducido
+        /// </summary>
+        /// <param name="espacioDisponible"></param>El numero a asignar
         public Changuito(int espacioDisponible):this()
         {
             this.espacioDisponible = espacioDisponible;

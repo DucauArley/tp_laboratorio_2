@@ -20,14 +20,21 @@ namespace Entidades_2018
         /// <summary>
         /// Por defecto, TIPO será ENTERA
         /// </summary>
-        /// <param name="marca"></param>
-        /// <param name="patente"></param>
-        /// <param name="color"></param>
+        /// <param name="marca"></param>La marca del producto
+        /// <param name="patente"></param>El codigo de barras del producto
+        /// <param name="color"></param>El color del empaque del producto
         public Leche(EMarca marca, string patente, ConsoleColor color): base(patente, marca, color)
         {
             this.tipo = ETipo.Entera;
         }
 
+        /// <summary>
+        /// Constructor que asigna los valores introducidos
+        /// </summary>
+        /// <param name="marca"></param>La marca del producto
+        /// <param name="patente"></param>El codigo de barras del producto
+        /// <param name="color"></param>El color del empaque del producto
+        /// <param name="tipo"></param>Tipo de producto
         public Leche(EMarca marca, string patente, ConsoleColor color, ETipo tipo):this(marca, patente, color)
         {
             this.tipo = tipo;
@@ -44,6 +51,10 @@ namespace Entidades_2018
             }
         }
 
+        /// <summary>
+        /// Publica todos los datos del Producto.
+        /// </summary>
+        /// <returns></returns>
         public override string Mostrar()
         {
             StringBuilder sb = new StringBuilder();

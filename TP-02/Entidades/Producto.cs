@@ -19,6 +19,14 @@ namespace Entidades_2018
         protected string codigoDeBarras;
         protected ConsoleColor colorPrimarioEmpaque;
 
+
+
+        /// <summary>
+        /// Constructor que asigna los valores introducidos
+        /// </summary>
+        /// <param name="patente"></param>El codigo de barras del producto
+        /// <param name="marca"></param>La marca del producto
+        /// <param name="color"></param>El color del empaque del producto
         public Producto(string patente, EMarca marca, ConsoleColor color)
         {
             this.marca = marca;
@@ -45,7 +53,7 @@ namespace Entidades_2018
         /// <summary>
         /// Muestra todos los datos del producto
         /// </summary>
-        /// <param name="p"></param>
+        /// <param name="p"></param>El producto cuyos datos seran mostrados
         public static explicit operator string(Producto p)
         {
             StringBuilder sb = new StringBuilder();
@@ -61,8 +69,8 @@ namespace Entidades_2018
         /// <summary>
         /// Dos productos son iguales si comparten el mismo código de barras
         /// </summary>
-        /// <param name="v1"></param>
-        /// <param name="v2"></param>
+        /// <param name="v1"></param>Primer producto a ser comparado
+        /// <param name="v2"></param>Segundo producto a ser comparado
         /// <returns></returns>
         public static bool operator ==(Producto v1, Producto v2)
         {
@@ -71,8 +79,8 @@ namespace Entidades_2018
         /// <summary>
         /// Dos productos son distintos si su código de barras es distinto
         /// </summary>
-        /// <param name="v1"></param>
-        /// <param name="v2"></param>
+        /// <param name="v1"></param>Primer producto a ser comparado
+        /// <param name="v2"></param>Segundo producto a ser comparado
         /// <returns></returns>
         public static bool operator !=(Producto v1, Producto v2)
         {
