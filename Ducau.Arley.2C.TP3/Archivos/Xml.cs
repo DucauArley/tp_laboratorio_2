@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ducau.Arley._2C.TP3
+namespace Archivos
 {
-    class Program
+    class Xml
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }
