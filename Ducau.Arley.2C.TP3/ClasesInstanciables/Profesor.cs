@@ -17,7 +17,7 @@ namespace ClasesInstanciables
             random = new Random();
         }
 
-        private Profesor()
+        public Profesor()
         {
         }
 
@@ -25,6 +25,7 @@ namespace ClasesInstanciables
         public Profesor(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad):base(id, nombre, apellido, dni, nacionalidad)
         {
             this.clasesDelDia = new Queue<Universidad.EClases>();
+            _RandomClase();
         }
 
         protected override string MostrarDatos()
@@ -51,6 +52,44 @@ namespace ClasesInstanciables
             return retorno;
         }
 
+        public override string ToString()
+        {
+            StringBuilder str = new StringBuilder();
+            string retorno;
+
+            str.Append(MostrarDatos());
+            str.Append(ParticiparEnClase());
+
+            retorno = str.ToString();
+
+            return retorno;
+        }
+
+
+        private void _RandomClase()
+        {
+            for (int i = 0; i < 1; i++)
+            {
+                this.clasesDelDia.Enqueue((Universidad.EClases)random.Next(0, 4));
+            }
+        }
+
+        public static bool operator ==(Profesor i, Universidad.EClases clase)
+        {
+            bool ok = false;
+
+            if (i.clasesDelDia.Contains(clase))
+            {
+                ok = true;
+            }
+            
+            return ok;
+        }
+
+        public static bool operator !=(Profesor i, Universidad.EClases clase)
+        {
+            return !(i == clase);
+        }
 
 
     }

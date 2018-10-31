@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Excepciones
 {
-    class ArchivosException
+    public class ArchivosException:Exception
     {
+        public ArchivosException(Exception innerException):base("Ocurrio un error con el archivo", innerException)
+        {
+
+        }
     }
 }
