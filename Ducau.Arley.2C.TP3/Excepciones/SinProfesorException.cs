@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Excepciones
 {
-    class SinProfesorException
+    public class SinProfesorException: Exception
     {
+        public SinProfesorException():base("La clase no tiene profesor")
+        {
+
+        }
     }
 }

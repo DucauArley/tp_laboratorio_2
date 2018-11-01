@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Excepciones
 {
-    class AlumnoRepetidoException
+    public class AlumnoRepetidoException: Exception
     {
+        public AlumnoRepetidoException():base("El alumno esta repetido")
+        {
+
+        }
     }
 }

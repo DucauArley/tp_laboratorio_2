@@ -29,11 +29,12 @@ namespace ClasesAbstractas
 
         public Persona(string nombre, string apellido, ENacionalidad nacionalidad, int dni) : this(nombre, apellido, nacionalidad, dni.ToString())
         {
+
         }
 
         public Persona(string nombre, string apellido, ENacionalidad nacionalidad, string dni) : this(nombre, apellido, nacionalidad)
         {
-            int.TryParse(dni, out this.dni);
+            StringToDni = dni;
         }
 
         public string Apellido

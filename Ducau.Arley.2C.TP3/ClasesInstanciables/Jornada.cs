@@ -91,8 +91,9 @@ namespace ClasesInstanciables
 
             if(tex.Guardar("Jornada.txt", j.ToString()) == false)
             {
-                throw new ArchivosException(null);//#############################
                 ok = false;
+                IOException e = new IOException();
+                throw new ArchivosException(e);
             }
 
             return ok;
@@ -101,17 +102,16 @@ namespace ClasesInstanciables
         public string Leer(Jornada j)
         {
             Texto tex = new Texto();
-            string retorno;
+            string retorno = "";
 
             if (tex.Leer("Jornada.txt", out retorno) == false)
             {
-                throw new ArchivosException(null);//#############################
+                IOException e = new IOException();
+                throw new ArchivosException(e);
             }
 
             return retorno;
         }
-
-
 
         public static bool operator ==(Jornada j, Alumno a)
         {
