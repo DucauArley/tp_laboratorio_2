@@ -45,6 +45,7 @@ namespace ClasesInstanciables
             string retorno;
 
             str.AppendLine("Toma clases de: " + this.clasesQueToma);
+            str.AppendLine("Estado de cuenta: " + this.estadoCuenta);
 
             retorno = str.ToString();
 

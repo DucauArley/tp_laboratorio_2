@@ -20,7 +20,7 @@ namespace ClasesInstanciables
             this.alumnos = new List<Alumno>();
         }
 
-        public Jornada(Universidad.EClases clase, Profesor instructor)
+        public Jornada(Universidad.EClases clase, Profesor instructor):this()
         {
             this.clase = clase;
             this.instructor = instructor;
@@ -84,7 +84,7 @@ namespace ClasesInstanciables
             return retorno;
         }
 
-        public bool Guardar(Jornada j)
+        public static bool Guardar(Jornada j)
         {
             Texto tex = new Texto();
             bool ok = true;
@@ -99,7 +99,7 @@ namespace ClasesInstanciables
             return ok;
         }
 
-        public string Leer(Jornada j)
+        public static string Leer(Jornada j)
         {
             Texto tex = new Texto();
             string retorno = "";

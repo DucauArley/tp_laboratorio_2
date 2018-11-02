@@ -45,7 +45,15 @@ namespace ClasesInstanciables
             StringBuilder str = new StringBuilder();
             string retorno;
 
-            str.AppendLine("Clases del dia: " + this.clasesDelDia.ElementAt(0) + " y " + this.clasesDelDia.ElementAt(1));
+            str.AppendLine("Clases del dia: ");
+
+            if (this.clasesDelDia != null)
+            {
+                foreach (Universidad.EClases c in this.clasesDelDia)
+                {
+                    str.AppendLine(c.ToString());
+                }
+            }
 
             retorno = str.ToString();
 

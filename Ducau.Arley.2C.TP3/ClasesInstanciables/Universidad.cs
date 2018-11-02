@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
+using System.Runtime.Serialization;
 using Excepciones;
+using Archivos;
 
 namespace ClasesInstanciables
 {
@@ -107,8 +111,35 @@ namespace ClasesInstanciables
             return retorno;
         }
 
+        public static bool Guardar(Universidad uni)
+        {
+            Xml<Universidad> xml = new Xml<Universidad>();
+            bool ok = true;
 
+            if(xml.Guardar("Universidad.xml", uni) == false)
+            {
+                ok = false;
+                SerializationException e = new SerializationException();
+                throw new ArchivosException(e);
+            }
 
+            return ok;
+        } 
+
+        public static Universidad Leer(Universidad uni)
+        {
+            Xml<Universidad> xml = new Xml<Universidad>();
+
+            if(xml.Leer("Universidad.xml", out uni) == false)
+            {
+                SerializationException e = new SerializationException();
+                throw new ArchivosException(e);
+            }
+
+            return uni;
+        }
+
+        
         public static bool operator ==(Universidad g, Alumno a)
         {
             bool ok = false;
@@ -175,6 +206,10 @@ namespace ClasesInstanciables
             if(u != a)
             {
                 u.Alumnos.Add(a);
+            }
+            else
+            {
+                throw new AlumnoRepetidoException();
             }
 
             return u;

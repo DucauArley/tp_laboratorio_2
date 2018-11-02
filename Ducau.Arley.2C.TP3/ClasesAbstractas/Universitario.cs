@@ -41,12 +41,11 @@ namespace ClasesAbstractas
         {
             bool ok = false;
 
-
             if (obj is Universitario && this is Universitario)
             {
                 Universitario uni = (Universitario)obj;
 
-                if (this.Dni == uni.Dni && this.legajo == uni.legajo)
+                if (this.Dni == uni.Dni || this.legajo == uni.legajo)
                 {
                     ok = true;
                 }
