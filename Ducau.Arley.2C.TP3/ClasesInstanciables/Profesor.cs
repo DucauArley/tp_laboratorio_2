@@ -65,8 +65,8 @@ namespace ClasesInstanciables
             StringBuilder str = new StringBuilder();
             string retorno;
 
-            str.Append(MostrarDatos());
-            str.Append(ParticiparEnClase());
+            str.AppendLine(MostrarDatos());
+            str.AppendLine(ParticiparEnClase());
 
             retorno = str.ToString();
 

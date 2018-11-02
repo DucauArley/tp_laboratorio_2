@@ -91,7 +91,7 @@ namespace ClasesInstanciables
 
             foreach (Jornada j in uni.Jornadas)
             {
-                str.Append(j.ToString());
+                str.AppendLine(j.ToString());
             }
 
             retorno = str.ToString();
@@ -104,7 +104,7 @@ namespace ClasesInstanciables
             StringBuilder str = new StringBuilder();
             string retorno;
 
-            str.Append(MostrarDatos(this));
+            str.AppendLine(MostrarDatos(this));
 
             retorno = str.ToString();
 
