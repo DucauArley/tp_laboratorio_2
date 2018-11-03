@@ -15,11 +15,23 @@ namespace ClasesAbstractas
         private ENacionalidad nacionalidad;
         private string nombre;
 
+
+        /// <summary>
+        /// Constrctor por defecto de Persona
+        /// </summary>
         public Persona()
         {
 
         }
 
+
+
+        /// <summary>
+        /// Constructor de instancia
+        /// </summary>
+        /// <param name="nombre"></param>Nombre de la persona
+        /// <param name="apellido"></param>Apellido de la persona
+        /// <param name="nacionalidad"></param>Nacionalidad de la persona
         public Persona(string nombre, string apellido, ENacionalidad nacionalidad)
         {
             this.nombre = nombre;
@@ -27,16 +39,35 @@ namespace ClasesAbstractas
             this.nacionalidad = nacionalidad;
         }
 
+
+        /// <summary>
+        /// Constructor de instancia
+        /// </summary>
+        /// <param name="nombre"></param>Nombre de la persona
+        /// <param name="apellido"></param>Apellido de la persona
+        /// <param name="nacionalidad"></param>Nacionalidad de la persona
+        /// <param name="dni"></param>Dni de la persona, entero
         public Persona(string nombre, string apellido, ENacionalidad nacionalidad, int dni) : this(nombre, apellido, nacionalidad, dni.ToString())
         {
 
         }
 
+        /// <summary>
+        /// Constructor de instancia
+        /// </summary>
+        /// <param name="nombre"></param>Nombre de la persona
+        /// <param name="apellido"></param>Apellido de la persona
+        /// <param name="nacionalidad"></param>Nacionalidad de la persona
+        /// <param name="dni"></param>Dni de la persona, cadena de caracteres
         public Persona(string nombre, string apellido, ENacionalidad nacionalidad, string dni) : this(nombre, apellido, nacionalidad)
         {
             StringToDni = dni;
         }
 
+
+        /// <summary>
+        /// Propeidad de lectura/escritura de Apellido
+        /// </summary>
         public string Apellido
         {
             get
@@ -50,6 +81,10 @@ namespace ClasesAbstractas
             }
         }
 
+
+        /// <summary>
+        /// Propiedad de lectura/escritura de Nombre
+        /// </summary>
         public string Nombre
         {
             get
@@ -63,6 +98,9 @@ namespace ClasesAbstractas
             }
         }
 
+        /// <summary>
+        /// Propiedad de lectura/escritura de Nacionalidad
+        /// </summary>
         public ENacionalidad Nacionalidad
         {
             get
@@ -76,6 +114,9 @@ namespace ClasesAbstractas
             }
         }
 
+        /// <summary>
+        /// Propiedad de escritura de Dni, cadena de caracteres
+        /// </summary>
         public string StringToDni
         {
             set
@@ -84,6 +125,9 @@ namespace ClasesAbstractas
             }
         }
 
+        /// <summary>
+        /// Propiedad de lectura/escritura de Dni, entero
+        /// </summary>
         public int Dni
         {
             get
@@ -97,6 +141,13 @@ namespace ClasesAbstractas
             }
         }
 
+
+        /// <summary>
+        /// Metodo para validar el dni
+        /// </summary>
+        /// <param name="nacionalidad"></param>Nacionalidad de la persona
+        /// <param name="dato"></param>Dni de le persona, entero
+        /// <returns></returns>El dni de la persona
         private int ValidarDni(ENacionalidad nacionalidad, int dato)
         {
             if (dato < 1 || dato > 99999999)
@@ -126,6 +177,13 @@ namespace ClasesAbstractas
             return dato;
         }
 
+
+        /// <summary>
+        /// Metodo para validar el dni
+        /// </summary>
+        /// <param name="nacionalidad"></param>Nacionalidad de la persona
+        /// <param name="dato"></param>Dni de le persona, cadena de caracteres
+        /// <returns></returns>El dni de la persona
         private int ValidarDni(ENacionalidad nacionalidad, string dato)
         {
             int dni = 0;
@@ -146,6 +204,11 @@ namespace ClasesAbstractas
             return dni;
         }
 
+        /// <summary>
+        /// Metodo para validar el Nombre/Apellido
+        /// </summary>
+        /// <param name="dato"></param>Nombre/Apellido de la persona
+        /// <returns></returns>El nombre/apellido de la persona
         private string ValidarNombreApellido(string dato)
         {
             string retorno = "";
@@ -159,6 +222,11 @@ namespace ClasesAbstractas
             return retorno;
         }
 
+
+        /// <summary>
+        /// Metodo sobreescrito ToString()
+        /// </summary>
+        /// <returns></returns>Todos los datos de la persona
         public override string ToString()
         {
             StringBuilder str = new StringBuilder();
@@ -173,6 +241,10 @@ namespace ClasesAbstractas
             return retorno;
         }
 
+
+        /// <summary>
+        /// enumerado de las nacionalidades
+        /// </summary>
         public enum ENacionalidad
         {
             Argentino,
