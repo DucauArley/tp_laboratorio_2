@@ -130,9 +130,13 @@ namespace ClasesAbstractas
         {
             int dni = 0;
 
-            if (int.TryParse(dato, out dni))
+            if (Regex.IsMatch(dato, @"^[0-9]+[0-9\.]*$")) 
             {
-                dni = ValidarDni(nacionalidad, dni);
+                dato = dato.Replace(".", "");
+                if (int.TryParse(dato, out dni))
+                {
+                    dni = ValidarDni(nacionalidad, dni);
+                }
             }
             else
             {

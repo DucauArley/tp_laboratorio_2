@@ -71,12 +71,14 @@ namespace ClasesInstanciables
             StringBuilder str = new StringBuilder();
             string retorno;
 
-            str.AppendLine("Clase de: " + this.Clase + "Por: ");
+            str.AppendLine("Jornada: ");
+            str.AppendLine("Clase de: " + this.Clase + " Por: ");
             str.AppendLine(Instructor.ToString());
 
+            str.AppendLine("Alumnos: ");
             foreach (Alumno a in this.Alumnos)
             {
-                str.Append(a.ToString());
+                str.AppendLine(a.ToString());
             }
 
             retorno = str.ToString();

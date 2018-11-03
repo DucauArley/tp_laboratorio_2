@@ -9,7 +9,7 @@ namespace ClasesInstanciables
 {
     public sealed class Alumno:Universitario
     {
-        private Universidad.EClases  clasesQueToma;
+        private Universidad.EClases  claseQueToma;
         private EEstadoCuenta estadoCuenta;
 
         public Alumno()
@@ -19,7 +19,7 @@ namespace ClasesInstanciables
 
         public Alumno(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad, Universidad.EClases claseQueToma):base(id, nombre, apellido, dni, nacionalidad)
         {
-            this.clasesQueToma = claseQueToma;
+            this.claseQueToma = claseQueToma;
         }
 
         public Alumno(int id, string nombre, string apellido, string dni, ENacionalidad nacionalidad, Universidad.EClases clasesQueToma, EEstadoCuenta estadoCuenta):this(id, nombre, apellido, dni, nacionalidad, clasesQueToma)
@@ -44,7 +44,7 @@ namespace ClasesInstanciables
             StringBuilder str = new StringBuilder();
             string retorno;
 
-            str.AppendLine("Toma clases de: " + this.clasesQueToma);
+            str.AppendLine("Toma clases de: " + this.claseQueToma);
             str.AppendLine("Estado de cuenta: " + this.estadoCuenta);
 
             retorno = str.ToString();
@@ -69,7 +69,7 @@ namespace ClasesInstanciables
         {
             bool ok = false;
 
-            if(a.clasesQueToma == clase && a.estadoCuenta != EEstadoCuenta.Deudor)
+            if(a.claseQueToma == clase && a.estadoCuenta != EEstadoCuenta.Deudor)
             {
                 ok = true;
             }

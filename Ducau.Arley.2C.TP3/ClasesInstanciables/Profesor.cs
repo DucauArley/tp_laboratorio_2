@@ -51,7 +51,7 @@ namespace ClasesInstanciables
             {
                 foreach (Universidad.EClases c in this.clasesDelDia)
                 {
-                    str.AppendLine(c.ToString());
+                    str.AppendLine("" + c);
                 }
             }
 
@@ -76,7 +76,7 @@ namespace ClasesInstanciables
 
         private void _RandomClase()
         {
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 2; i++)
             {
                 this.clasesDelDia.Enqueue((Universidad.EClases)random.Next(0, 4));
             }
