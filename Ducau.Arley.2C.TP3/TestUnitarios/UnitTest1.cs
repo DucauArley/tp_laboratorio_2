@@ -10,6 +10,10 @@ namespace TestUnitarios
     [TestClass]
     public class UnitTest1
     {
+
+        /// <summary>
+        /// Testea que se lance la excepcion AlumnoRepetidoException cuando se quieren agregar uno o mas alumnos repetidos en la universidad
+        /// </summary>
         [TestMethod]
         public void TestAlumnoRepetidoExcepcion()
         {
@@ -41,7 +45,11 @@ namespace TestUnitarios
                 Assert.IsInstanceOfType(e, typeof(AlumnoRepetidoException));
             }
         }
-        
+
+
+        /// <summary>
+        /// Testea que se lance la excepción SinProfesorException cuando no hay un profesor que de esa clase
+        /// </summary>
         [TestMethod]
         [ExpectedException (typeof(SinProfesorException))]
         public void TestSinProfesorException()
@@ -51,7 +59,11 @@ namespace TestUnitarios
             u += Universidad.EClases.Programacion;
             
         }
+        
 
+        /// <summary>
+        /// Testea que el valor de los dni se carguen correctamente
+        /// </summary>
         [TestMethod]
         public void TestDni()
         {
@@ -66,6 +78,10 @@ namespace TestUnitarios
             Assert.IsTrue(98461385 == i2.Dni);
         }
 
+
+        /// <summary>
+        /// Testea que los atributos de tipo lista de una clase universidad no sean nulas
+        /// </summary>
         [TestMethod]
         public void TestUniversidadListas()
         {

@@ -9,6 +9,13 @@ namespace Archivos
 {
     public class Texto: IArchivo<string>
     {
+
+        /// <summary>
+        /// Guarda los datos en formato de texto
+        /// </summary>
+        /// <param name="archivo"></param>La ruta donde se encuentra el archivo
+        /// <param name="datos"></param>Los datos a ser guardados en el archivo
+        /// <returns></returns>True si no se produjeron excepciones al guardar, false si se produjeron
         public bool Guardar(string archivo, string datos)
         {
             StreamWriter texto = null;
@@ -31,7 +38,12 @@ namespace Archivos
             return ok;
         }
 
-
+        /// <summary>
+        /// Lee los datos en formato de texto de un archivo
+        /// </summary>
+        /// <param name="archivo"></param>La ruta donde se encuentra el archivo
+        /// <param name="datos"></param>Parametro de salida donde se guardan los datos
+        /// <returns></returns>True si no se produjeron excepciones al leer, false si se produjeron
         public bool Leer(string archivo, out string datos)
         {
             StreamReader texto = null;
@@ -51,8 +63,7 @@ namespace Archivos
             {
                 texto.Close();
             }
-
-
+            
             return ok;
         }
 

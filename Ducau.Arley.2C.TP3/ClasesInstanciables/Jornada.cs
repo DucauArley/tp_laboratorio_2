@@ -15,17 +15,31 @@ namespace ClasesInstanciables
         private Universidad.EClases clase;
         private Profesor instructor;
 
+
+        /// <summary>
+        /// Constructor privado donde se inicializa la lista de alumnos
+        /// </summary>
         private Jornada()
         {
             this.alumnos = new List<Alumno>();
         }
 
+
+        /// <summary>
+        /// Constructor de instancia que llama al constructor privado
+        /// </summary>
+        /// <param name="clase"></param>Clase de la jornada
+        /// <param name="instructor"></param>Profesor de la jornada
         public Jornada(Universidad.EClases clase, Profesor instructor):this()
         {
             this.clase = clase;
             this.instructor = instructor;
         }
 
+
+        /// <summary>
+        /// Propiedad de lectura/escritura de la lista de alumnos
+        /// </summary>
         public List<Alumno> Alumnos
         {
             get
@@ -40,6 +54,10 @@ namespace ClasesInstanciables
 
         }
 
+
+        /// <summary>
+        /// Propiedad de lectura/escritura de la clase
+        /// </summary>
         public Universidad.EClases Clase
         {
             get
@@ -53,6 +71,10 @@ namespace ClasesInstanciables
             }
         }
 
+
+        /// <summary>
+        /// Propiedad de lectura/escritura del profesor
+        /// </summary>
         public Profesor Instructor
         {
             get
@@ -66,6 +88,10 @@ namespace ClasesInstanciables
             }
         }
 
+        /// <summary>
+        /// Metodo sobreescrito
+        /// </summary>
+        /// <returns></returns>Devuelve todos los datos de la jornada
         public override string ToString()
         {
             StringBuilder str = new StringBuilder();
@@ -86,6 +112,12 @@ namespace ClasesInstanciables
             return retorno;
         }
 
+
+        /// <summary>
+        /// Metodo para guardar los datos de la jornada en un archivo
+        /// </summary>
+        /// <param name="j"></param>Jornada a ser guardada
+        /// <returns></returns>True si se pudo guardar, false si no
         public static bool Guardar(Jornada j)
         {
             Texto tex = new Texto();
@@ -101,7 +133,12 @@ namespace ClasesInstanciables
             return ok;
         }
 
-        public static string Leer(Jornada j)
+
+        /// <summary>
+        /// Metodo para leer los datos de una jornada guardada en un archivo
+        /// </summary>
+        /// <returns></returns>Devuelve los datos de la jornada guardada
+        public static string Leer()
         {
             Texto tex = new Texto();
             string retorno = "";
@@ -115,6 +152,13 @@ namespace ClasesInstanciables
             return retorno;
         }
 
+
+        /// <summary>
+        /// Compara si un alumno esta en una jornada
+        /// </summary>
+        /// <param name="j"></param>Jornada a ser comparada
+        /// <param name="a"></param>Alumno a ser comparado
+        /// <returns></returns>True si esta en la jornada, false si no lo esta
         public static bool operator ==(Jornada j, Alumno a)
         {
             bool ok = false;
@@ -127,11 +171,24 @@ namespace ClasesInstanciables
             return ok;
         }
 
+        /// <summary>
+        /// Compara si un alumno esta en una jornada
+        /// </summary>
+        /// <param name="j"></param>Jornada a ser comparada
+        /// <param name="a"></param>Alumno a ser comparado
+        /// <returns></returns>True si esta en la jornada, false si no lo esta
         public static bool operator !=(Jornada j, Alumno a)
         {
             return !(j == a);
         }
 
+
+        /// <summary>
+        /// Agrega un alumno a una jornada
+        /// </summary>
+        /// <param name="j"></param>Jornada a la cual se le agregara un alumno
+        /// <param name="a"></param>Alumno a ser agregado
+        /// <returns></returns>La jornada con el alumno agregado
         public static Jornada operator +(Jornada j, Alumno a)
         {
             if(j != a)

@@ -8,6 +8,10 @@ namespace Excepciones
 {
     public class SinProfesorException: Exception
     {
+
+        /// <summary>
+        /// Constructor por defecto
+        /// </summary>
         public SinProfesorException():base("La clase no tiene profesor")
         {
 

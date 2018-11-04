@@ -52,7 +52,7 @@ namespace ClasesInstanciables
         /// <summary>
         /// Metodo sobreescrito de Universitario
         /// </summary>
-        /// <returns></returns>Datos del alumno
+        /// <returns></returns>Devuelve los datos del alumno
         protected override string MostrarDatos()
         {
             StringBuilder str = new StringBuilder();
