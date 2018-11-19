@@ -14,11 +14,21 @@ namespace Entidades
         private static SqlCommand sqlCommand;
         private static SqlConnection sqlConnection;
 
+
+        /// <summary>
+        /// Constructor estatico que inicializa la conexion
+        /// </summary>
         static PaqueteDAO()
         {
             sqlConnection = new SqlConnection(@"Data Source=.\SQLEXPRESS;Initial Catalog=correo-sp-2017;Integrated Security=True");
         }
 
+
+        /// <summary>
+        /// Metodo que agrega un paquete a la base de datos
+        /// </summary>
+        /// <param name="p"></param>Paquete a agregar
+        /// <returns></returns>True si se agrego correctamente, false si no
         public static bool Insertar(Paquete p)
         {
             bool ok = true;
@@ -32,7 +42,7 @@ namespace Entidades
             catch (Exception e)
             {
                 ok = false;
-                throw e;              
+                throw e;
             }
             finally
             {
@@ -41,14 +51,9 @@ namespace Entidades
                     sqlConnection.Close();
                 }
             }
-
-
+            
             return ok;
         }
-
-
-
-
 
     }
 }

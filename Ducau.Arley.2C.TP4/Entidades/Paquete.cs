@@ -9,12 +9,18 @@ namespace Entidades
 {
     public class Paquete:IMostrar<Paquete>
     {
-        public delegate void DelegadoEstado();
-        private event DelegadoEstado InformaEstado;
+        public delegate void DelegadoEstado(object sender, EventArgs e);
+        public event DelegadoEstado InformaEstado;
         private string direccionEntrega;
         private EEstado estado;
         private string trackingID;
         
+
+        /// <summary>
+        /// Constructor de instancia que inicializa todos los atributos
+        /// </summary>
+        /// <param name="direccionEntrega"></param>Direccion del paquete
+        /// <param name="trackingId"></param>trackingId del packete
         public Paquete(string direccionEntrega, string trackingId)
         {
             this.direccionEntrega = direccionEntrega;
@@ -22,6 +28,10 @@ namespace Entidades
             this.estado = EEstado.Ingresado;
         }
 
+
+        /// <summary>
+        /// Propiedad de lectura/escritura de DireccionEntrega
+        /// </summary>
         public string DireccionEntrega
         {
             get
@@ -35,6 +45,9 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Propiedad de lectura/escritura de Estado
+        /// </summary>
         public EEstado Estado
         {
             get
@@ -48,6 +61,9 @@ namespace Entidades
             }
         }
 
+        /// <summary>
+        /// Propiedad de lectura/escritura de TrackingID
+        /// </summary>
         public string TrackingID
         {
             get
@@ -61,50 +77,51 @@ namespace Entidades
             }
         }
 
+
+        /// <summary>
+        /// Muestra los datos del paquete
+        /// </summary>
+        /// <param name="elemento"></param>Paquete a mostrar
+        /// <returns></returns>Los datos del paquete
         public string MostrarDatos(IMostrar<Paquete> elemento)
         {
-            string retorno;
+            string retorno = "";
 
-            retorno = string.Format("{0} para {1}", ((Paquete)elemento).TrackingID, ((Paquete)elemento).DireccionEntrega);
+            if (elemento is Paquete)
+            {
+                retorno = string.Format("{0} para {1}", ((Paquete)elemento).TrackingID, ((Paquete)elemento).DireccionEntrega);
+            }
 
             return retorno;
         }
 
+
+        /// <summary>
+        /// Metodo sobreescrito
+        /// </summary>
+        /// <returns></returns>Todos los datos del paquete
         public override string ToString()
         {
             StringBuilder str = new StringBuilder();
             string retorno;
 
-            str.Append(MostrarDatos(this));
-            str.AppendLine("Estado: " + this.Estado);
+            str.Append(this.MostrarDatos(this));
+            str.AppendLine("(" + this.Estado + ")");
 
             retorno = str.ToString();
             
             return retorno;
         }
 
-        public static bool operator ==(Paquete p1, Paquete p2)
-        {
-            bool ok = false;
 
-            if(p1.TrackingID == p2.TrackingID)
-            {
-                ok = true;
-            }
-
-            return ok;
-        }
-
-        public static bool operator !=(Paquete p1, Paquete p2)
-        {
-            return !(p1 == p2);
-        }
-
+        /// <summary>
+        /// Metodo que cambia el estado del paquete
+        /// </summary>
         public void MockCicloDeVida()
         {
             do
             {
-                this.InformaEstado.Invoke();
+                this.InformaEstado.Invoke(this, null);
 
                 Thread.Sleep(4000);
 
@@ -119,7 +136,7 @@ namespace Entidades
 
             } while (this.Estado != EEstado.Entregado);
 
-            this.InformaEstado.Invoke();
+            this.InformaEstado.Invoke(this, null);
 
             try
             {
@@ -132,6 +149,38 @@ namespace Entidades
         }
 
 
+        /// <summary>
+        /// Compara si un paquete es igual al otro
+        /// </summary>
+        /// <param name="p1"></param>Paquete a ser comparado
+        /// <param name="p2"></param>Paquete a ser comparado
+        /// <returns></returns>True si son iguales, false si no
+        public static bool operator ==(Paquete p1, Paquete p2)
+        {
+            bool ok = false;
+
+            if(p1.TrackingID == p2.TrackingID)
+            {
+                ok = true;
+            }
+
+            return ok;
+        }
+
+        /// <summary>
+        /// Compara si un paquete no es igual al otro
+        /// </summary>
+        /// <param name="p1"></param>Paquete a ser comparado
+        /// <param name="p2"></param>Paquete a ser comparado
+        /// <returns></returns>True si no son iguales, false si lo son
+        public static bool operator !=(Paquete p1, Paquete p2)
+        {
+            return !(p1 == p2);
+        }
+
+        /// <summary>
+        /// Enumerado de los estados que puede tener el paquete
+        /// </summary>
         public enum EEstado
         {
             Ingresado,
