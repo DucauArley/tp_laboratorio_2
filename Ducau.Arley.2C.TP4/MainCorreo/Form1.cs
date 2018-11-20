@@ -73,25 +73,25 @@ namespace MainCorreo
                 switch (p.Estado)
                 {
                     case Paquete.EEstado.Ingresado:
-                        if (!lstEstadoIngresado.Items.Contains(p.ToString()))
+                        if (!lstEstadoIngresado.Items.Contains(p))
                         {
-                            lstEstadoIngresado.Items.Add(p.ToString());
+                            lstEstadoIngresado.Items.Add(p);
                         }
 
                         break;
                     case Paquete.EEstado.EnViaje:
 
-                        if (!lstEstadoEnViaje.Items.Contains(p.ToString()))
+                        if (!lstEstadoEnViaje.Items.Contains(p))
                         {
-                            lstEstadoEnViaje.Items.Add(p.ToString());
+                            lstEstadoEnViaje.Items.Add(p);
                             lstEstadoIngresado.Items.Clear();
                         }
 
                         break;
                     case Paquete.EEstado.Entregado:
-                        if (!lstEstadoEntregado.Items.Contains(p.ToString()))
+                        if (!lstEstadoEntregado.Items.Contains(p))
                         {
-                            lstEstadoEntregado.Items.Add(p.ToString());
+                            lstEstadoEntregado.Items.Add(p);
                             lstEstadoEnViaje.Items.Clear();
                         }
 
